@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { StyledCard, StyledCardButton } from "./CardList.styled";
+import logo from "../img/logo.svg";
+import decor1x from "../img/cloud1x.png";
+import decor2x from "../img/cloud1x.png";
+
+import {
+  StyledCard,
+  StyledCardButton,
+  StyledList,
+  StyledText,
+  StyledImgThumb,
+  StyledAvatar,
+  StyledClouds,
+} from "./CardList.styled";
 
 axios.defaults.baseURL = "https://6492d14f428c3d2035d0be95.mockapi.io/";
 
@@ -44,20 +56,31 @@ export const CardList = () => {
   };
 
   return (
-    <ul>
+    <StyledList>
       {users.map((user) => (
-        <li key={user.id}>
-          <StyledCard>
-            {user.user}
-            {user.followers}
-            <StyledCardButton
-              follow={user.isFollowing}
-              onClick={() => onFollowBtnClick(user.id)}
-            >
-              {user.isFollowing ? "Follow" : "Following"}
-            </StyledCardButton>
-          </StyledCard>
-        </li>
+        <StyledCard key={user.id}>
+          <img src={logo} alt="logo" />
+          <StyledClouds
+            src={decor1x}
+            // srcSet={`${decor1x} 1x, ${decor2x} 2x`}
+            alt="bg"
+          />
+          <StyledImgThumb>
+            <StyledAvatar src={user.avatar} alt="avatar" />
+          </StyledImgThumb>
+          <StyledText style={{ marginBottom: "16px", marginTop: "242px" }}>
+            {user.tweets} Tweets
+          </StyledText>
+          <StyledText style={{ marginBottom: "26px" }}>
+            {Intl.NumberFormat().format(user.followers)} Followers
+          </StyledText>
+          <StyledCardButton
+            follow={user.isFollowing}
+            onClick={() => onFollowBtnClick(user.id)}
+          >
+            {user.isFollowing ? "Following" : "Follow"}
+          </StyledCardButton>
+        </StyledCard>
       ))}
       {page < 10 && (
         <button
@@ -69,6 +92,6 @@ export const CardList = () => {
           Load more
         </button>
       )}
-    </ul>
+    </StyledList>
   );
 };
