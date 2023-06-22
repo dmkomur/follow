@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "../img/logo.svg";
-import decor1x from "../img/cloud1x.png";
-import decor2x from "../img/cloud1x.png";
 
 import {
   StyledCard,
@@ -10,8 +8,8 @@ import {
   StyledList,
   StyledText,
   StyledImgThumb,
+  StyledBtnLoad,
   StyledAvatar,
-  StyledClouds,
 } from "./CardList.styled";
 
 axios.defaults.baseURL = "https://6492d14f428c3d2035d0be95.mockapi.io/";
@@ -60,11 +58,6 @@ export const CardList = () => {
       {users.map((user) => (
         <StyledCard key={user.id}>
           <img src={logo} alt="logo" />
-          <StyledClouds
-            src={decor1x}
-            // srcSet={`${decor1x} 1x, ${decor2x} 2x`}
-            alt="bg"
-          />
           <StyledImgThumb>
             <StyledAvatar src={user.avatar} alt="avatar" />
           </StyledImgThumb>
@@ -83,14 +76,14 @@ export const CardList = () => {
         </StyledCard>
       ))}
       {page < 10 && (
-        <button
+        <StyledBtnLoad
           type="button"
           onClick={() => {
             setPage((prev) => (prev += 1));
           }}
         >
           Load more
-        </button>
+        </StyledBtnLoad>
       )}
     </StyledList>
   );

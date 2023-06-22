@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import decor1x from "../img/cloud1x.webp";
+import decor2x from "../img/cloud2x.webp";
 
 export const StyledList = styled.ul`
   width: 1200px;
@@ -13,15 +15,25 @@ export const StyledCard = styled.li`
   width: 380px;
   height: 460px;
   padding: 20px 20px 36px 20px;
-  background-image: linear-gradient(
-      114.99deg,
-      #471ca9 -0.99%,
-      #5736a3 54.28%,
-      #4b2a99 78.99%
-    ),
-    url("../img/cloud1x.png");
+  background-image: url(${decor1x}),
+    linear-gradient(114.99deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
+  background-repeat: no-repeat;
+  background-position: 36px 28px, center;
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    & {
+      background-image: url(${decor2x}),
+        linear-gradient(
+          114.99deg,
+          #471ca9 -0.99%,
+          #5736a3 54.28%,
+          #4b2a99 78.99%
+        );
+    }
+  }
   &:after {
     content: "";
     position: absolute;
@@ -91,4 +103,26 @@ export const StyledClouds = styled.img`
   position: absolute;
   top: 28px;
   left: 36px;
+`;
+export const StyledBtnLoad = styled.button`
+  margin: 0 auto;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.22;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+  padding: 14px 0px;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+  width: 196px;
+  background-color: #4b2a99;
+  transition: all 250ms ease;
+  &:hover,
+  &:focus {
+    color: yellow;
+  }
 `;
