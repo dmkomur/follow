@@ -1,14 +1,7 @@
 import styled from "styled-components";
-import decor1x from "../img/cloud1x.webp";
-import decor2x from "../img/cloud2x.webp";
+import decor1x from "../../img/cloud1x.webp";
+import decor2x from "../../img/cloud2x.webp";
 
-export const StyledList = styled.ul`
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-`;
 export const StyledCard = styled.li`
   position: relative;
   text-align: center;
@@ -103,26 +96,4 @@ export const StyledClouds = styled.img`
   position: absolute;
   top: 28px;
   left: 36px;
-`;
-export const StyledBtnLoad = styled.button`
-  margin: 0 auto;
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.22;
-  text-transform: uppercase;
-  color: #ffffff;
-  border: none;
-  text-align: center;
-  padding: 14px 0px;
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
-  border-radius: 10.3108px;
-  width: 196px;
-  background-color: #4b2a99;
-  transition: all 250ms ease;
-  &:hover,
-  &:focus {
-    color: yellow;
-  }
 `;

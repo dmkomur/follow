@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import logo from "../img/logo.svg";
-import { local } from "../services/storage";
-import {
-  StyledCard,
-  StyledCardButton,
-  StyledList,
-  StyledText,
-  StyledImgThumb,
-  StyledBtnLoad,
-  StyledAvatar,
-} from "./CardList.styled";
+import { local } from "../../services/storage";
+import { StyledList, StyledBtnLoad } from "./CardList.styled";
+import { Card } from "../Card/Card";
 
 axios.defaults.baseURL = "https://6492d14f428c3d2035d0be95.mockapi.io/";
 
@@ -65,27 +57,17 @@ export const CardList = () => {
   };
 
   return (
-    <StyledList>
-      {users.map((user) => (
-        <StyledCard key={user.id}>
-          <img src={logo} alt="logo" />
-          <StyledImgThumb>
-            <StyledAvatar src={user.avatar} alt="avatar" />
-          </StyledImgThumb>
-          <StyledText style={{ marginBottom: "16px", marginTop: "242px" }}>
-            {Intl.NumberFormat().format(user.tweets)} Tweets
-          </StyledText>
-          <StyledText style={{ marginBottom: "26px" }}>
-            {Intl.NumberFormat().format(user.followers)} Followers
-          </StyledText>
-          <StyledCardButton
+    <>
+      <StyledList>
+        {users.map((user) => (
+          <Card
+            key={user.id}
+            userData={user}
+            handleClick={onFollowBtnClick}
             follow={followList.includes(user.id)}
-            onClick={() => onFollowBtnClick(user.id)}
-          >
-            {followList.includes(user.id) ? "Following" : "Follow"}
-          </StyledCardButton>
-        </StyledCard>
-      ))}
+          />
+        ))}
+      </StyledList>
       {page < 10 && (
         <StyledBtnLoad
           type="button"
@@ -96,23 +78,6 @@ export const CardList = () => {
           Load more
         </StyledBtnLoad>
       )}
-    </StyledList>
+    </>
   );
 };
-
-//  const currentIndex = users.findIndex((el) => el.id === id);
-//  setUsers((prevUsers) => {
-//    const updatedUsers = [...prevUsers];
-//    const currentUser = { ...updatedUsers[currentIndex] };
-//    if (currentUser.isFollowing) {
-//      currentUser.followers -= 1;
-//      currentUser.isFollowing = !currentUser.isFollowing;
-//      axios.put(`users/${id}`, currentUser);
-//    } else {
-//      currentUser.followers += 1;
-//      currentUser.isFollowing = !currentUser.isFollowing;
-//      axios.put(`users/${id}`, currentUser);
-//    }
-//    updatedUsers[currentIndex] = currentUser;
-//    return updatedUsers;
-//  });
