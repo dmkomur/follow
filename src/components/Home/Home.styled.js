@@ -17,3 +17,18 @@ export const StyledPic = styled(GiFlyingFox)`
   fill: #ae7be3;
   margin: 24px auto;
 `;
+export const StyledLink = styled.a`
+  padding-top: 80px;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  font-family: "Montserrat";
+  font-style: normal;
+  text-decoration: underline;
+  font-size: 32px;
+  color: #ae7be3;
+  transition: all 250ms ease;
+  &:hover {
+    color: yellow;
+  }
+`;

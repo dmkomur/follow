@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledList = styled.ul`
   width: 1200px;
   margin: 0 auto;
-  padding-top: 84px;
+  padding-top: 120px;
   display: flex;
   gap: 30px;
   flex-wrap: wrap;

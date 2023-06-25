@@ -3,6 +3,7 @@ import axios from "axios";
 import { local } from "../../services/storage";
 import { StyledList, StyledBtnLoad } from "./CardList.styled";
 import { Card } from "../Card/Card";
+import { ToolBar } from "../ToolBar/ToolBar";
 
 axios.defaults.baseURL = "https://6492d14f428c3d2035d0be95.mockapi.io/";
 
@@ -13,6 +14,8 @@ export const CardList = () => {
     const listFromLS = local.load("follow");
     return listFromLS || [];
   });
+  const [filter, setFilter] = useState("all");
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -45,6 +48,11 @@ export const CardList = () => {
       return updatedUsers;
     });
   }
+
+  function handleRadioChange(e) {
+    setFilter(e.target.value);
+  }
+
   const onFollowBtnClick = (id) => {
     if (followList.includes(id)) {
       const newList = followList.filter((item) => item !== id);
@@ -55,11 +63,22 @@ export const CardList = () => {
       updateUser(id, 1);
     }
   };
-
+  const filteredUsers = () => {
+    if (filter === "all") {
+      return users;
+    }
+    if (filter === "followed") {
+      return users.filter((user) => followList.includes(user.id));
+    }
+    if (filter === "not") {
+      return users.filter((user) => !followList.includes(user.id));
+    }
+  };
   return (
     <>
+      <ToolBar handleChange={handleRadioChange} />
       <StyledList>
-        {users.map((user) => (
+        {filteredUsers().map((user) => (
           <Card
             key={user.id}
             userData={user}
@@ -74,7 +93,6 @@ export const CardList = () => {
           onClick={() => {
             setPage((prev) => (prev += 1));
           }}
-          disabled={true}
         >
           Load more
         </StyledBtnLoad>
