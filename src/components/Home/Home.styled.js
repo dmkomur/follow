@@ -12,7 +12,7 @@ export const StyledTitle = styled(Link)`
   font-size: 32px;
   color: #4b2a99;
   transition: all 250ms ease;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 
   &:hover {
     color: yellow;
@@ -44,7 +44,7 @@ export const StyledLink = styled.a`
   font-weight: 600;
   font-family: "Montserrat";
   font-style: normal;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   font-size: 32px;
   color: #4b2a99;
   transition: all 250ms ease;
