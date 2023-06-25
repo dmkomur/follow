@@ -4,10 +4,11 @@ export const StyledHeader = styled.div`
   position: fixed;
   z-index: 2;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 1240px;
   height: 60px;
+  padding: 0 24px;
   margin: 0 auto;
   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   background-image: linear-gradient(
