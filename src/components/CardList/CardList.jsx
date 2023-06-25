@@ -74,6 +74,7 @@ export const CardList = () => {
           onClick={() => {
             setPage((prev) => (prev += 1));
           }}
+          disabled={true}
         >
           Load more
         </StyledBtnLoad>

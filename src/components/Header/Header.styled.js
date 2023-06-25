@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 export const StyledHeader = styled.div`
   position: fixed;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 1240px;
   height: 60px;
   margin: 0 auto;
@@ -21,7 +24,11 @@ export const NavItem = styled(NavLink)`
   font-style: normal;
   font-size: 24px;
   color: #ffffff;
-  &:active {
+  text-transform: uppercase;
+  &:hover {
+    color: #ae7be3;
+  }
+  &.active {
     color: yellow;
   }
 `;

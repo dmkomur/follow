@@ -9,7 +9,8 @@ export const StyledList = styled.ul`
   flex-wrap: wrap;
 `;
 export const StyledBtnLoad = styled.button`
-  margin: 0 auto;
+  margin: 16px auto;
+  display: block;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
